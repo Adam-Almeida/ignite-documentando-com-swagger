@@ -1,0 +1,80 @@
+{
+  "openapi": "3.0.0",
+  "info":{
+      "title": "SOLID Api Documentation",
+      "description": "This is an API SOLID by Adam Almeida",
+      "version": "1.0.0",
+      "contact": {
+          "email": "adam.designjuridico@gmail.com"
+      }
+  },
+  "paths":{
+    "/users":{
+    "post":{
+       "tags": ["Users"],
+          "summary": "Create new User",
+          "description": "Create a new User",
+          "requestBody": {
+               "content": {
+                    "application/json":{
+                        "schema": {
+                            "type":"object",
+                            "properties":{
+                                "name": {
+                                    "type":"string"
+                                },
+                                "email": {
+                                    "type":"string"
+                                }
+                            },
+                            "example":{
+                                "name": "Adam Almeida",
+                                "email": "adam@samplemail.com"
+                            }
+                        }
+                    }
+                }
+            },
+            "responses": {
+                "201": {
+                  "type":"Object",
+                  "description": "Success"
+                },
+                "400": {
+                    "description": "User Already Exists"
+                }
+            }
+    },
+    "get":{
+      "tags":["Users"],
+      "summary":"List all Users",
+      "description":"List all Users",
+      "responses":{
+        "400":{
+          "description":"User not found"
+        },
+        "200":{
+          "description":"Success"
+        },
+        "content":{
+          "schema":{
+            "type":"array",
+            "itens":{
+              "type":"object",
+              "properties":{
+                "name":{
+                  "type":"string"
+                },
+                "email":{
+                  "type":"string"
+                }
+              }
+            }
+          }
+        }
+      }
+
+    }
+    }
+  }
+}
